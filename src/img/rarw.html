@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen flex-col">
+
+<div class="bg-white p-8 rounded-lg shadow-md w-80 text-center">
+    <h2 class="text-2xl font-bold mb-4">Output</h2>
+    <img id="randomImage" src="" alt="Random Image" class="w-full h-auto rounded-lg mb-4">
+    <p id="imageName" class="mb-4 font-bold"></p>
+    <p class="text-left">Nama: <span id="outputName" class="font-semibold"></span></p>
+    <p class="text-left">Daerah: <span id="outputRegion" class="font-semibold"></span></p>
+</div>
+
+<script>
+    function getRandomImage() {
+        const images = [
+            {src: 'https://via.placeholder.com/300x200?text=Image+1', name: 'Image 1'},
+            {src: 'https://via.placeholder.com/300x200?text=Image+2', name: 'Image 2'},
+            {src: 'https://via.placeholder.com/300x200?text=Image+3', name: 'Image 3'},
+            {src: 'https://via.placeholder.com/300x200?text=Image+4', name: 'Image 4'},
+            {src: 'https://via.placeholder.com/300x200?text=Image+5', name: 'Image 5'}
+        ];
+        return images[Math.floor(Math.random() * images.length)];
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var name = localStorage.getItem('name');
+        var region = localStorage.getItem('region');
+
+        document.getElementById('outputName').innerText = name;
+        document.getElementById('outputRegion').innerText = region;
+
+        var randomImage = getRandomImage();
+        document.getElementById('randomImage').src = randomImage.src;
+        document.getElementById('imageName').innerText = randomImage.name;
+    });
+</script>
+
+</body>
+</html>
